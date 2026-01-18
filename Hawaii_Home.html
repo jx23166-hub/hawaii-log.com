@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8">
+        <title>Home</title>
+
+        <link rel="stylesheet" type="text/css" href="mystyle.css">
+    </head>
+
+    <body id="home">
+        <header>
+            <h1>Hawaii Log</h1>
+            <div class="container" id="menu">
+                <ul>
+                <li class="active"><a href="Hawaii_Home.html">HOME</a></li>
+                <li><a href="Oahu.html">Oahu</a></li>
+                <li><a href="Bigisland.html">BigIsland</a></li>
+                <li><a href="OtherIslands.html">Other Island</a></li>
+                <li><a href="Gallery.html">Gallery</a></li>
+                </ul>
+            </div>
+        </header>
+
+        <main>
+            <section class="top">
+                <div class="text-box">
+                    <h2>About This Site</h2>
+                    <h4>このサイトについて</h4>
+                    <p>
+                    <br>
+                    このサイトでは、私が実際に訪れたハワイの島々の写真を中心に、
+                    オアフ島とハワイ島の魅力を紹介します。
+                    <br>
+                    <br>
+                    </p>
+                    <small>写真をクリックすると拡大されます。</small>
+                    </div>
+                <div class="gallery">
+                <a href="image/header.JPEG">
+                    <img src="image/header.JPEG" alt="ハワイの風景">
+                </a>
+                </div>
+            </section>
+
+            <section class="movie">
+                <h2>Image Movie</h2>
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/c_Xmvr6OVug?si=nyD5cy3hI_gG8rKo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                <br>
+                <small class="credit">動画:ハワイ州観光局公式YouTube</small>
+            </section>
+
+            <section class="island-overview">
+                <h2>Hawaiian Islands Overview</h2>
+                <h4>ハワイの概要</h4>
+
+                <p class="lead">
+                ハワイ諸島は太平洋に位置する6つの主要な島からなる群島で、
+                島ごとに自然環境や文化が大きく異なります。
+                </p>
+
+                <div class="overview-grid">
+                    <div class="item" id="island">
+                    <h3>島の数</h3>
+                    <p>
+                    ハワイには8つの主要な島があり、
+                    オアフ島やハワイ島など、それぞれ異なる特徴を持っています。
+                    </p>
+                    </div>
+
+                    <div class="item" id="nature">
+                    <h3>自然環境</h3>
+                    <p>
+                    活火山、熱帯雨林、ビーチなど、
+                    島ごとに多様な自然環境が広がっています。
+                    </p>
+                    </div>
+
+                    <div class="item" id="flower">
+                    <h3>島の色と花</h3>
+                    <p>
+                    各島には象徴となる「島の色」や「島の花」が定められており、
+                    ハワイ独自の文化を感じることができます。
+                    </p>
+                    </div>
+                </div>
+            </section>
+            <div id="cover"></div>
+            <div id="largeImg"><img width="550" src="image/header.JPEG"></div>
+        </main>
+
+        <script src="jquery.js"></script>
+        <script>
+        /* 画像拡大 */
+        $('.gallery a').on('click', function(e){
+        e.preventDefault();
+
+        $('#cover').css({
+            position:'fixed',
+            left:0, top:0,
+            width:'100%', height:'100%'
+        }).show();
+
+        $('#largeImg').css({
+            position:'fixed',
+            left:'50%',
+            top:'50%',
+            transform:'translate(-50%, -50%)'
+        }).html('<img src="'+$(this).attr('href')+'" width="600">')
+            .fadeIn('slow');
+        });
+
+        /* 閉じる */
+        $('#cover, #largeImg').on('click', function(){
+        $('#largeImg').fadeOut().empty();
+        $('#cover').hide();
+        });
+        </script>
+
+        <footer class="container" id="footer">
+            <small>&copy; 2025 About Hawaii</small>
+        </footer>  
+    </body>
+</html>
